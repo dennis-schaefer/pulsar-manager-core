@@ -1,0 +1,37 @@
+services:
+  timescaledb:
+    image: timescale/timescaledb:${TIMESCALEDB_VERSION}
+    container_name: pm-timescaledb-dev
+    ports:
+      - "5432:5432"
+    networks:
+      - pm-network-dev
+    environment:
+      POSTGRES_DB: pulsarmanager
+      POSTGRES_USER: ${TIMESCALEDB_USERNAME}
+      POSTGRES_PASSWORD: ${TIMESCALEDB_PASSWORD}
+    volumes:
+      - pm-timescaledb-data-dev:/home/postgres/pgdata/data
+
+  pulsar-instance-a:
+    image: apachepulsar/pulsar-all:${PULSAR_VERSION}
+    container_name: pm-pulsar-instance-a-dev
+    command: bin/pulsar standalone
+    user: root
+    ports:
+      - "16650:6650"
+      - "18080:8080"
+    networks:
+      - pm-network-dev
+    environment:
+      PULSAR_STANDALONE_USE_ZOOKEEPER: 1
+    volumes:
+      - pm-pulsar-data-dev:/pulsar/data
+
+networks:
+  pm-network-dev:
+    driver: bridge
+
+volumes:
+  pm-timescaledb-data-dev:
+  pm-pulsar-data-dev:

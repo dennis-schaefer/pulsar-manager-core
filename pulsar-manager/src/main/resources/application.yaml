@@ -1,0 +1,19 @@
+spring.application.name: pulsar-manager
+---
+spring.security.user:
+  name: ${pulsar-manager.admin.username}
+  password: ${pulsar-manager.admin.password}
+  roles: ADMIN
+---
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${pulsar-manager.datasource.url}
+    username: ${pulsar-manager.datasource.username}
+    password: ${pulsar-manager.datasource.password}
+---
+spring.pulsar:
+  admin:
+    service-url: http://localhost:18080
+  client:
+    service-url: pulsar://localhost:16650

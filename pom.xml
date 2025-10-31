@@ -1,0 +1,83 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.5.7</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>de.schaeferd</groupId>
+    <artifactId>pulsar-manager-core</artifactId>
+    <version>1</version>
+    <packaging>pom</packaging>
+    <name>pulsar-manager-core</name>
+
+    <developers>
+        <developer>
+            <name>Dennis Schaefer</name>
+            <url>https://github.com/dennis-schaefer</url>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/dennis-schaefer/pulsar-manager-core</url>
+        <connection>scm:git:https://github.com/dennis-schaefer/pulsar-manager-core.git</connection>
+    </scm>
+
+    <ciManagement>
+        <system>GitHub Actions</system>
+        <url>https://github.com/dennis-schaefer/pulsar-manager-core/actions</url>
+    </ciManagement>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/dennis-schaefer/pulsar-manager-core/issues</url>
+    </issueManagement>
+
+    <properties>
+        <java.version>25</java.version>
+        <spring-modulith.version>1.4.4</spring-modulith.version>
+        <vaadin.version>24.9.4</vaadin.version>
+        <dotenv-java.version>3.0.2</dotenv-java.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.modulith</groupId>
+                <artifactId>spring-modulith-bom</artifactId>
+                <version>${spring-modulith.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-bom</artifactId>
+                <version>${vaadin.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>io.github.cdimascio</groupId>
+                <artifactId>dotenv-java</artifactId>
+                <version>${dotenv-java.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <modules>
+        <module>pulsar-manager</module>
+    </modules>
+</project>
