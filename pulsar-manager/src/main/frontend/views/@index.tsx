@@ -1,13 +1,20 @@
+import {ViewConfig} from "@vaadin/hilla-file-router/types.js";
+import {useAuth} from "Frontend/auth";
+
+export const config: ViewConfig = {
+    title: 'Pulsar Manager',
+    loginRequired: true
+}
+
 export default function HomeView() {
-  return (
-    <div>
-      <h1>Welcome to your new application</h1>
-      <p>This is the home view.</p>
-      <p>
-        You can edit this view in <code>pulsar-manager\src\main\frontend\views\@index.tsx</code> or by
-        activating Copilot by clicking the icon in the lower right corner
-      </p>
-    </div>
+
+    const auth = useAuth();
+
+    return (
+        <div>
+            <h1>Pulsar Manager</h1>
+            <p>Hello {auth.state.user?.name}</p>
+        </div>
   );
 }
 

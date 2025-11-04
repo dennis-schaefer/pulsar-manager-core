@@ -1,4 +1,5 @@
 spring.application.name: pulsar-manager
+server.port: 8080
 ---
 spring.security.user:
   name: ${pulsar-manager.admin.username}
@@ -8,12 +9,25 @@ spring.security.user:
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: ${pulsar-manager.datasource.url}
-    username: ${pulsar-manager.datasource.username}
-    password: ${pulsar-manager.datasource.password}
+    url: ${pulsar-manager.database.url}
+    username: ${pulsar-manager.database.username}
+    password: ${pulsar-manager.database.password}
 ---
 spring.pulsar:
   admin:
     service-url: http://localhost:18080
   client:
     service-url: pulsar://localhost:16650
+---
+management:
+  server.port: 8090
+  endpoints.web:
+    base-path: /
+    exposure:
+      include: health,prometheus
+    path-mapping:
+      prometheus: metrics
+---
+logging.level:
+  org.atmosphere: WARN
+  com.vaadin: WARN

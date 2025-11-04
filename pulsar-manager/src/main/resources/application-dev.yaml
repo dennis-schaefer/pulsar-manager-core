@@ -1,3 +1,2 @@
 pulsar-manager:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/pulsarmanager
+  database.url: jdbc:postgresql://localhost:5432/pulsarmanager
