@@ -1,0 +1,4 @@
+pulsar-manager:
+  admin:
+    username: admin
+    password: admin

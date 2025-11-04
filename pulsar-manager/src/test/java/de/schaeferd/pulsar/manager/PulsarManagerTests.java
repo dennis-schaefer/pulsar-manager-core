@@ -3,8 +3,10 @@ package de.schaeferd.pulsar.manager;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
+import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
+@ActiveProfiles("it")
 @Import(TestcontainersConfiguration.class)
 class PulsarManagerTests
 {
