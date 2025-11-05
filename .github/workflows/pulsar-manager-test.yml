@@ -1,0 +1,35 @@
+name: pulsar-manager-test
+on:
+  push:
+    paths:
+      - 'pulsar-manager/**'
+      - 'pom.xml'
+      - '.github/workflows/pulsar-manager-test.yml'
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  pulsar-manager-test:
+    runs-on: ubuntu-latest
+
+    env:
+      MAVEN_CLI_OPTS: --batch-mode --errors --fail-at-end
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v5
+
+      - name: Set up JDK 25
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'corretto'
+          java-version: '25'
+          cache: 'maven'
+
+      - name: Run maven tests
+        run: mvn $MAVEN_CLI_OPTS verify -Dtest=*
